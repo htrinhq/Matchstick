@@ -53,6 +53,5 @@ int create_map(map_t *map)
 		map->map[y][x] = '*';
 	map->map[y][x] = '\0';
 	map->map[y + 1] = NULL;
-	display_map(map);
 	return (0);
 }

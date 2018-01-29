@@ -16,6 +16,8 @@ typedef struct map {
 	char **map;
 	int lines;
 	int max_nb;
+	int usr_line;
+	int usr_matches;
 } map_t;
 
 int my_atoi(char *number);
@@ -24,6 +26,6 @@ void fill_line(map_t *map, int *y, int *x, int *pipe);
 void display_map(map_t *map);
 int create_map(map_t *map);
 char *my_strcat(char *str1, char *str2);
-void input(void);
+int input(void);
 
 #endif

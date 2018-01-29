@@ -22,6 +22,7 @@ int main(int ac, char **av)
 	if (create_map(map))
 		return (66);
 	else
-		input();
+		game_loop(map);
+		//input();
 	return (0);
 }
