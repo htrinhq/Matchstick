@@ -6,13 +6,17 @@
 ##
 
 SRC	=	source/main.c	\
-		source/my_atoi.c
+		source/my_atoi.c	\
+		source/my_strlen.c	\
+		source/map.c	\
+		source/copycat.c	\
+		source/game_loop.c
 
 OBJ	=	$(SRC:.c=.o)
 
 NAME	=	matchstick
 
-CFLAGS	=	-W -Wall -Wextra -I include
+CFLAGS	=	-W -Wall -Wextra -I include -g
 
 ##LDFLAGS	=	-L ./lib/ -lgnl
 

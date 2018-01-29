@@ -19,5 +19,11 @@ typedef struct map {
 } map_t;
 
 int my_atoi(char *number);
+int my_strlen(char *str);
+void fill_line(map_t *map, int *y, int *x, int *pipe);
+void display_map(map_t *map);
+int create_map(map_t *map);
+char *my_strcat(char *str1, char *str2);
+void input(void);
 
 #endif
