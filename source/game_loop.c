@@ -7,27 +7,43 @@
 
 #include "stick.h"
 
-int input(int limit, char* name)
+int limit_superior(int nb, int limit, int ind)
 {
-	char *command = malloc(sizeof(char) + 1);
-	char *usr_cmd;
-	int nb;
-
-	read(0, command, 1);
-	command[1] = '\0';
-	if (command[0] == '\0')
-		return (-99999);
-	usr_cmd = my_strdup(command);
-	while (command[0] != '\n') {
-		read(0, command, 1);
-		if (command[0] != '\n')
-			usr_cmd = my_strcat(usr_cmd, command);
-	}
-	nb = my_atoi(usr_cmd);
 	if (nb > limit) {
-		write(1, "Invalid value!\n", 15);
-		write(1, name, my_strlen(name));
-		nb = input(limit, name);
+		if (ind)
+			my_printf("Error: this line is out of range\n");
+		else {
+			my_printf("You cannot remove more than ");
+			my_printf("%d matches per turn\n", limit);
+		}
+		return (1);
+	}
+	return (0);
+}
+
+int define_limit(map_t *map, int ind)
+{
+	int limit;
+
+	if (ind)
+		limit = map->lines;
+	else
+		limit = map->max_nb;
+	return (limit);
+}
+
+int errors(char* usr_cmd, map_t *map, int ind)
+{
+	int nb;
+	int limit = define_limit(map, ind);
+
+	if (check_usr_cmd(usr_cmd)) {
+		my_printf("Error: invalid input (positive number expected)\n");
+		return (-777);
+	} else {
+		nb = my_atoi(usr_cmd);
+		if (limit_superior(nb, limit, ind))
+			return(-777);
 	}
 	return (nb);
 }
@@ -37,8 +53,6 @@ void change_map(map_t *map, usr_t *usr)
 	int x = 1;
 	int i = 1;
 
-	printf("line : %d\n", usr->line);
-	printf("match : %d\n", usr->matches);
 	while(map->map[usr->line][x] == ' ')
 		x = x + 1;
 	while (map->map[usr->line][x] == '|')
@@ -55,13 +69,8 @@ int game_loop(map_t *map)
 
 	display_map(map);
 	while (42) {
-		write(1, "Your turn\nLine: ", 16);
-		usr->line = input(map->lines, "Line: ");
-		if (usr->line == -99999)
-			return (-1);
-		write(1, "Matches: ", 10);
-		usr->matches = input(map->max_nb, "Matches: ");
-		if (usr->matches == -99999)
+		my_printf("\nYour turn\n");
+		if (fill_usr(usr, map))
 			return (-1);
 		write(1, "\n", 1);
 		change_map(map, usr);

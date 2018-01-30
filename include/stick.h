@@ -10,7 +10,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <stdio.h>
+#include "stdyo.h"
 
 typedef struct map {
 	char **map;
@@ -29,8 +29,11 @@ void fill_line(map_t *map, int *y, int *x, int *pipe);
 void display_map(map_t *map);
 int create_map(map_t *map);
 char *my_strcat(char *str1, char *str2);
-int input(int limit, char* name);
+int input(map_t *map, int ind);
 int game_loop(map_t *map);
 char *my_strdup(char *str);
+int fill_usr(usr_t *usr, map_t *map);
+int check_usr_cmd(char *cmd);
+int errors(char* usr_cmd, map_t *map, int ind);
 
 #endif
