@@ -74,6 +74,7 @@ int game_loop(map_t *map)
 			return (-1);
 		write(1, "\n", 1);
 		change_map(map, usr);
+		my_printf("Player removed %d match(es) from line %d\n", usr->matches, usr->line);
 		display_map(map);
 	}
 	return (0);
