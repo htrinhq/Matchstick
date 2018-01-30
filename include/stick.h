@@ -27,5 +27,6 @@ void display_map(map_t *map);
 int create_map(map_t *map);
 char *my_strcat(char *str1, char *str2);
 int input(void);
+void game_loop(map_t *map);
 
 #endif
