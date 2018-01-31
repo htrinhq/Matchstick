@@ -21,8 +21,5 @@ int main(int ac, char **av)
 	map->max_nb = my_atoi(av[2]);
 	if (create_map(map))
 		return (66);
-	else
-		game_loop(map);
-		//input();
-	return (0);
+	return (game_loop(map));
 }

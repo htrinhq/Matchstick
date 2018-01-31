@@ -35,5 +35,8 @@ char *my_strdup(char *str);
 int fill_usr(usr_t *usr, map_t *map);
 int check_usr_cmd(char *cmd);
 int errors(char* usr_cmd, map_t *map, usr_t *usr, int ind);
+int check_map(map_t *map);
+int usr_turn(map_t *map, usr_t *usr);
+void change_map(map_t *map, usr_t *usr);
 
 #endif

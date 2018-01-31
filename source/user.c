@@ -59,3 +59,19 @@ int input(map_t *map, usr_t *usr, int ind)
 	nb = errors(usr_cmd, map, usr, ind);
 	return (nb);
 }
+
+int usr_turn(map_t *map, usr_t *usr)
+{
+	my_printf("\nYour turn\n");
+	if (fill_usr(usr, map))
+		return (-1);
+	change_map(map, usr);
+	my_printf("Player removed %d match(es) from line %d\n",
+	usr->matches, usr->line);
+	display_map(map);
+	if (check_map(map)) {
+		my_printf("You lost, too bad..");
+		return (1);
+	}
+	return (0);
+}

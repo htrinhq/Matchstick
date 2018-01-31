@@ -59,7 +59,8 @@ int errors(char* usr_cmd, map_t *map, usr_t *usr, int ind)
 		return (-777);
 	} else {
 		nb = my_atoi(usr_cmd);
-		if (limit_superior(nb, limit, ind) || check_matches(nb, usr, map, ind))
+		if (limit_superior(nb, limit, ind) ||
+		check_matches(nb, usr, map, ind))
 			return(-777);
 	}
 	return (nb);
@@ -86,12 +87,8 @@ int game_loop(map_t *map)
 
 	display_map(map);
 	while (42) {
-		my_printf("\nYour turn\n");
-		if (fill_usr(usr, map))
-			return (-1);
-		change_map(map, usr);
-		my_printf("Player removed %d match(es) from line %d\n", usr->matches, usr->line);
-		display_map(map);
+		if (usr_turn(map, usr))
+			return (2);
 	}
 	return (0);
 }
