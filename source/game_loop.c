@@ -12,7 +12,7 @@ void change_map(map_t *map, usr_t *usr)
 	int x = 1;
 	int i = 1;
 
-	while(map->map[usr->line][x] == ' ')
+	while (map->map[usr->line][x] == ' ')
 		x = x + 1;
 	while (map->map[usr->line][x] == '|')
 		x = x + 1;

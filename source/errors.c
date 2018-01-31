@@ -61,7 +61,7 @@ int errors(char* usr_cmd, map_t *map, usr_t *usr, int ind)
 		nb = my_atoi(usr_cmd);
 		if (limit_superior(nb, limit, ind) ||
 		check_matches(nb, usr, map, ind))
-			return(-777);
+			return (-777);
 	}
 	return (nb);
 }
