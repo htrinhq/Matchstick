@@ -9,7 +9,7 @@
 
 int limit_superior(int nb, int limit, int ind)
 {
-	if (nb > limit) {
+	if (nb > limit || nb <= 0) {
 		if (ind)
 			my_printf("Error: this line is out of range\n");
 		else {
@@ -32,7 +32,24 @@ int define_limit(map_t *map, int ind)
 	return (limit);
 }
 
-int errors(char* usr_cmd, map_t *map, int ind)
+int check_matches(int nb, usr_t *usr, map_t *map, int ind)
+{
+	int x = 0;
+	int pipe = 0;
+
+	if (ind)
+		return (0);
+	for (x = 0; map->map[usr->line][x]; x = x + 1)
+		if (map->map[usr->line][x] == '|')
+			pipe = pipe + 1;
+	if (pipe < nb) {
+		my_printf("Error: not enough matches on this line\n");
+		return (1);
+	}
+	return (0);
+}
+
+int errors(char* usr_cmd, map_t *map, usr_t *usr, int ind)
 {
 	int nb;
 	int limit = define_limit(map, ind);
@@ -42,7 +59,7 @@ int errors(char* usr_cmd, map_t *map, int ind)
 		return (-777);
 	} else {
 		nb = my_atoi(usr_cmd);
-		if (limit_superior(nb, limit, ind))
+		if (limit_superior(nb, limit, ind) || check_matches(nb, usr, map, ind))
 			return(-777);
 	}
 	return (nb);
@@ -72,7 +89,6 @@ int game_loop(map_t *map)
 		my_printf("\nYour turn\n");
 		if (fill_usr(usr, map))
 			return (-1);
-		write(1, "\n", 1);
 		change_map(map, usr);
 		my_printf("Player removed %d match(es) from line %d\n", usr->matches, usr->line);
 		display_map(map);

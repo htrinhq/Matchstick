@@ -10,19 +10,21 @@
 int fill_usr(usr_t *usr, map_t *map)
 {
 	my_printf("Line: ");
-	usr->line = input(map, 1);
+	usr->line = input(map, usr, 1);
 	if (usr->line == -99999)
 		return (1);
 	else if (usr->line == -777) {
-		fill_usr(usr, map);
+		if (fill_usr(usr, map))
+			return (1);
 		return (0);
 	}
 	my_printf("Matches: ");
-	usr->matches = input(map, 0);
+	usr->matches = input(map, usr, 0);
 	if (usr->matches == -99999)
 		return (1);
 	else if (usr->matches == -777)
-		fill_usr(usr, map);
+		if (fill_usr(usr, map))
+			return (1);
 	return (0);
 }
 
@@ -38,7 +40,7 @@ int check_usr_cmd(char *cmd)
 	return (0);
 }
 
-int input(map_t *map, int ind)
+int input(map_t *map, usr_t *usr, int ind)
 {
 	char *command = malloc(sizeof(char) + 1);
 	char *usr_cmd;
@@ -54,6 +56,6 @@ int input(map_t *map, int ind)
 		if (command[0] != '\n')
 			usr_cmd = my_strcat(usr_cmd, command);
 	}
-	nb = errors(usr_cmd, map, ind);
+	nb = errors(usr_cmd, map, usr, ind);
 	return (nb);
 }

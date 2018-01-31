@@ -29,11 +29,11 @@ void fill_line(map_t *map, int *y, int *x, int *pipe);
 void display_map(map_t *map);
 int create_map(map_t *map);
 char *my_strcat(char *str1, char *str2);
-int input(map_t *map, int ind);
+int input(map_t *map, usr_t *usr, int ind);
 int game_loop(map_t *map);
 char *my_strdup(char *str);
 int fill_usr(usr_t *usr, map_t *map);
 int check_usr_cmd(char *cmd);
-int errors(char* usr_cmd, map_t *map, int ind);
+int errors(char* usr_cmd, map_t *map, usr_t *usr, int ind);
 
 #endif
