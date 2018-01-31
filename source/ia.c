@@ -21,22 +21,22 @@ int check_line(map_t *map, usr_t *ia)
 
 void randomize(usr_t *ia, map_t *map)
 {
+	int max = check_line(map, ia);
 
 	srandom(time(NULL));
-	ia->line = (random() % map->max_nb) + 1;
-	if (check_line(map, ia) == 0)
-		randomize(ia, map);
+	ia->matches = (random() % map->max_nb) + 1;
+	if (max < ia->matches && max > 1)
+		ia->matches = max - 1;
+	else if (max < ia->matches)
+		ia->matches = max;
 }
 
 int ia_turn(map_t *map, usr_t *ia)
 {
-	srandom(time(NULL));
-
+	ia->line = map->lines;
+	while (!check_line(map, ia))
+		ia->line = ia->line - 1;
 	randomize(ia, map);
-	if (ia->matches > map->max_nb)
-		ia->matches = map->max_nb;
-	else if (ia->matches != 1)
-		ia->matches = ia->matches - 1;
 	my_printf("\nAI's turn..\n");
 	change_map(map, ia);
 	my_printf("AI removed %d match(es) from line %d\n",
