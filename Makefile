@@ -13,7 +13,8 @@ SRC	=	source/main.c	\
 		source/game_loop.c	\
 		source/user.c	\
 		source/check_map.c	\
-		source/errors.c
+		source/errors.c	\
+		source/ia.c
 
 OBJ	=	$(SRC:.c=.o)
 

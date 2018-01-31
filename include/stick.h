@@ -10,6 +10,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include <time.h>
 #include "stdyo.h"
 
 typedef struct map {
@@ -38,5 +39,6 @@ int errors(char* usr_cmd, map_t *map, usr_t *usr, int ind);
 int check_map(map_t *map);
 int usr_turn(map_t *map, usr_t *usr);
 void change_map(map_t *map, usr_t *usr);
+int ia_turn(map_t *map, usr_t *ia);
 
 #endif
