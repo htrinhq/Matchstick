@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2017
 ## Makefile
 ## File description:
-## desc
+## makefile for matchstick
 ##
 
 SRC	=	source/main.c	\

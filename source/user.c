@@ -9,10 +9,12 @@
 
 int fill_usr(usr_t *usr, map_t *map)
 {
+	int n;
+
 	my_printf("Line: ");
 	usr->line = input(map, usr, 1);
 	if (usr->line == -99999)
-		return (1);
+		return (2);
 	else if (usr->line == -777) {
 		if (fill_usr(usr, map))
 			return (1);
@@ -21,10 +23,11 @@ int fill_usr(usr_t *usr, map_t *map)
 	my_printf("Matches: ");
 	usr->matches = input(map, usr, 0);
 	if (usr->matches == -99999)
-		return (1);
-	else if (usr->matches == -777)
-		if (fill_usr(usr, map))
-			return (1);
+		return (2);
+	else if (usr->matches == -777) {
+		n = fill_usr(usr, map);
+		return (n);
+	}
 	return (0);
 }
 
@@ -62,8 +65,13 @@ int input(map_t *map, usr_t *usr, int ind)
 
 int usr_turn(map_t *map, usr_t *usr)
 {
+	int n;
+
 	my_printf("\nYour turn\n");
-	if (fill_usr(usr, map))
+	n = fill_usr(usr, map);
+	if (n == 2)
+		return (2);
+	else if (n)
 		return (-1);
 	change_map(map, usr);
 	my_printf("Player removed %d match(es) from line %d\n",
