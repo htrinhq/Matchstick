@@ -16,9 +16,8 @@ int fill_usr(usr_t *usr, map_t *map)
 	if (usr->line == -99999)
 		return (2);
 	else if (usr->line == -777) {
-		if (fill_usr(usr, map))
-			return (1);
-		return (0);
+		n = fill_usr(usr, map);
+		return (n);
 	}
 	my_printf("Matches: ");
 	usr->matches = input(map, usr, 0);
