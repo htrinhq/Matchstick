@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** my_putnbr.c
 ** File description:
-** ===> printf()
+** Displays an integer
 */
 
 #include "stdyo.h"

@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2017
 ** my_atoi.c
 ** File description:
-**reproduces atoi function
+** reproduces atoi function
 */
 
 #include "stick.h"
