@@ -37,7 +37,7 @@ int ia_turn(map_t *map, usr_t *ia)
 	while (!check_line(map, ia))
 		ia->line = ia->line - 1;
 	randomize(ia, map);
-	my_printf("\nAI's turn..\n");
+	my_printf("\nAI's turn...\n");
 	change_map(map, ia);
 	my_printf("AI removed %d match(es) from line %d\n",
 	ia->matches, ia->line);
