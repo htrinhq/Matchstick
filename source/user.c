@@ -66,7 +66,7 @@ int usr_turn(map_t *map, usr_t *usr)
 {
 	int n;
 
-	my_printf("\nYour turn\n");
+	my_printf("\nYour turn:\n");
 	n = fill_usr(usr, map);
 	if (n == 2)
 		return (2);
