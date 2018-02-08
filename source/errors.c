@@ -13,7 +13,7 @@ int limit_superior(int nb, int limit, int ind)
 		if (ind)
 			my_printf("Error: this line is out of range\n");
 		else {
-			my_printf("You cannot remove more than ");
+			my_printf("Error: You cannot remove more than ");
 			my_printf("%d matches per turn\n", limit);
 		}
 		return (1);
