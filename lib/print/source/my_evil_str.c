@@ -7,7 +7,7 @@
 
 #include "stdyo.h"
 
-char  *my_evil_str(char *str)
+char *my_evil_str(char *str)
 {
 	char r;
 	int len = my_strlen(str) - 1;

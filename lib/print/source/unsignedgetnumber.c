@@ -46,7 +46,7 @@ unsigned long long my_ulonglong_putnbr(unsigned long long nb)
 	return (0);
 }
 
-unsigned long  my_ulong_putnbr(unsigned long nb)
+unsigned long my_ulong_putnbr(unsigned long nb)
 {
 	if (nb <= 9) {
 		my_putchar('0' + nb);
