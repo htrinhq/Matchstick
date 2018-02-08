@@ -22,8 +22,7 @@ int my_put_nbr(int nb)
 			nb = nb / 10;
 			my_put_nbr(nb);
 			my_putchar(48 + nbr);
-		}
-		else
+		} else
 			my_putchar(48 + nb % 10);
 	}
 	return (0);
