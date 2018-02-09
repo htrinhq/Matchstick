@@ -32,7 +32,6 @@ int erasenb(const char *format, int x)
 }
 
 int my_printf(const char *format, ...)
-
 {
 	int x = 0;
 	va_list	list;

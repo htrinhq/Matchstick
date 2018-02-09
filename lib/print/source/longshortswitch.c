@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <stdarg.h>
 
-int dieseswitch (const char *format, int x, va_list list)
+int dieseswitch(const char *format, int x, va_list list)
 {
 	switch (format[x]) {
 		case 'o':
